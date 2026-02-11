@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Домашнє завдання</title>
+</head>
+<body>
+
+<h2>Студенти:</h2>
+<ul id="studentList">
+    <li id="s1" style="cursor:pointer; color:blue;">Іван</li>
+    <li id="s2" style="cursor:pointer; color:blue;">Марія</li>
+    <li id="s3" style="cursor:pointer; color:blue;">Олег</li>
+</ul>
+
+<h2>Інформація про студента:</h2>
+<div id="studentInfo" style="border:1px solid #000; padding:10px; width:300px; min-height:50px;"></div>
+
+<h2>Визначення:</h2>
+<div id="definition"></div>
+
+<button id="htmlBtn">HTML</button>
+<button id="cssBtn">CSS</button>
+
+<script>
+const student = {
+    info: function() {
+        return "Ім'я: " + this.name + "<br>Спеціальність: " + this.specialty + "<br>Середній бал: " + this.average + "<br>Пропущені заняття: " + this.absences;
+    }
+};
+
+const student1 = { name: "Іван", specialty: "Програмування", average: 4.5, absences: 2 };
+const student2 = { name: "Марія", specialty: "Дизайн", average: 4.8, absences: 0 };
+const student3 = { name: "Олег", specialty: "Математика", average: 4.2, absences: 3 };
+
+const studentInfoDiv = document.getElementById("studentInfo");
+
+document.getElementById("s1").onclick = function() {
+    studentInfoDiv.innerHTML = student.info.call(student1);
+};
+document.getElementById("s2").onclick = function() {
+    studentInfoDiv.innerHTML = student.info.apply(student2);
+};
+document.getElementById("s3").onclick = function() {
+    studentInfoDiv.innerHTML = student.info.bind(student3)();
+};
+
+const definitionDiv = document.getElementById("definition");
+document.getElementById("htmlBtn").onclick = function() {
+    definitionDiv.innerHTML = "HTML — мова розмітки для створення веб-сторінок";
+};
+document.getElementById("cssBtn").onclick = function() {
+    definitionDiv.innerHTML = "CSS — мова стилів для оформлення веб-сторінок";
+};
+</script>
+
+</body>
+</html>
