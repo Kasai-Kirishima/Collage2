@@ -2,13 +2,23 @@
 <html>
 <body>
 
-<div id="text">Цей елемент зникне</div>
-<button onclick="hideElement()">Сховати</button>
+<div data-widget-name="menu">
+  <p>Виберіть жанр:</p>
+  <ul>
+    <li>Комедія</li>
+    <li>Драма</li>
+    <li>Жахи</li>
+    <li>Бойовик</li>
+  </ul>
+</div>
 
 <script>
-function hideElement() {
-    document.getElementById("text").style.display = "none";
-}
+let elem = document.querySelector('[data-widget-name]');
+let value = elem.getAttribute('data-widget-name');
+console.log(value);
+
+let genres = Array.from(elem.querySelectorAll('li')).map(li => li.textContent);
+console.log(genres.join(", "));
 </script>
 
 </body>
